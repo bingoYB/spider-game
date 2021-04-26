@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//cdn.bootcdn.net" />
+    <meta
+      name="viewport"
+      content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="description" content="爬虫数据中心 - 大数据可视化页面展示" />
+    <title>爬虫数据中心</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 根据不同的环境，引入不同的cdn -->
+    <% if (htmlWebpackPlugin.options.env !== 'production') { %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+    <% } else { %>
+      <script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/quicklink/2.1.0/react/quicklink.umd.min.js"></script>
+    <script>
+      // 注册 serviceWorker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+      // 开启 quicklink
+      window.addEventListener('load', () => {
+        quicklink.listen();
+      });
+    </script>
+    <% } %>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bizcharts/4.1.10-beta.1/BizCharts.min.js"></script>
+  </body>
+</html>

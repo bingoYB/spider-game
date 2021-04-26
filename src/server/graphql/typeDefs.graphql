@@ -1,0 +1,21 @@
+type Lottery {
+  uid: String
+  frontNums: [Int]
+  backNums:  [Int]
+  # 奖池奖金
+  prizePool: String
+  # 一等奖
+  firstPrice: String
+  firstPriceNum: String
+  secondPrice: String
+  secondPriceNum: String
+  # 总投注额(元)
+  totalBet: String
+  # 开奖日期
+  date: String
+}
+
+
+type Query {
+  lottery(date:String): [Lottery]
+}

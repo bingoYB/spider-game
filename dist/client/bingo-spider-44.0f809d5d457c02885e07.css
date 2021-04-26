@@ -1,0 +1,12 @@
+.count{
+  font-size:36px;
+}
+
+.home-header,.home-body{
+  padding:16px 0;
+}
+
+.home-card{
+  padding:0 16px;
+  min-width:20%;
+}

@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    // 配置编译目标代码的版本标准
+    "target": "ES2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./types",
+    "allowJs": true,
+    "esModuleInterop": true, //设置es模块化导出commonjs模块化代码
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    // 配置编译目标使用的模块化标准
+    "module": "CommonJS",
+    //https://github.com/ant-design/ant-design/issues/8642 配置解析模块的模式
+    "moduleResolution": "node",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+
+  "include": [
+    "./src",
+    "./types",
+    "./test"
+  ],
+  "exclude": [
+    "./node_modules",
+  ]
+}

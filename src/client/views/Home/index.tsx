@@ -57,7 +57,7 @@ const Home:React.FunctionComponent =  () => {
     </Flex>
     :<Flex><Loading></Loading></Flex>}
     <NumProbabilityChart chartData={frontFigure}/>
-    <LoteryTable></LoteryTable>
+    <LoteryTable tableData={[]}></LoteryTable>
   </div>
 }
 

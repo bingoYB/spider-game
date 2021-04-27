@@ -14,7 +14,7 @@ const devConfig = {
     hot: true,
     // 代理服务器端域名
     proxy: {
-      '/': 'http://localhost:3000',
+      '/': 'http://175.27.130.159:3000/',
     },
     port:3001
   },
@@ -26,6 +26,22 @@ const devConfig = {
           'style-loader',
           'css-loader',
           'postcss-loader'
+        ],
+      },
+      {
+        test: /\.(less)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              }
+            },
+          },
         ],
       },
     ],

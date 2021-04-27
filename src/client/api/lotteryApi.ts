@@ -2,11 +2,15 @@ import { ApolloQueryResult, gql } from 'apollo-boost'
 import { Lottery } from 'lottery';
 import http, { gqlClient } from '../utils/request'
 
-export async function getLotteryList(dateArr: string): Promise<ApolloQueryResult<Lottery.data>> {
-  return gqlClient.query<Lottery.data>({
+interface queryResultData {
+  lottery: Lottery.data[]
+}
+
+export async function getLotteryList(): Promise<Lottery.data[]> {
+  return gqlClient.query<queryResultData>({
     query: gql`
     query {
-      lottery(date: ${dateArr}) {
+      lottery {
         uid
         frontNums
         backNums
@@ -19,7 +23,7 @@ export async function getLotteryList(dateArr: string): Promise<ApolloQueryResult
         date
       }
     }`
-  })
+  }).then(rs=>rs.data.lottery)
 }
 
 export function getAnalyze():Promise<Lottery.analyze>{

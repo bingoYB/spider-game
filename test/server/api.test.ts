@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost'
 import { Lottery } from 'lottery';
 
 const client = new ApolloClient<unknown>({
-  uri: 'http://localhost:3000/graphql',
+  uri: 'http://175.27.130.159:3000/graphql',
   // @ts-ignore
   fetch: fetch
 });
@@ -14,7 +14,7 @@ const date = '12313123'
 client.query<Lottery.data>({
   query: gql`
     query {
-      lottery(date: "12313123") {
+      lottery {
         uid
         frontNums
         backNums
@@ -22,6 +22,6 @@ client.query<Lottery.data>({
       }
     }`
 }).then((rs) => {
-  console.log(rs)
+  console.log(rs.data.uid)
 }).catch(err=>{
 })

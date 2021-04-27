@@ -14,7 +14,7 @@ export declare namespace Lottery{
     // 总投注额(元)
     totalBet: number
     // 开奖日期
-    date: string
+    date: string|number
   }
 
   interface statistics{

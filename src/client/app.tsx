@@ -38,7 +38,7 @@ const App: React.FunctionComponent = () => {
         <iframe src="https://ghbtns.com/github-btn.html?user=bingoYB&repo=spider-game&type=star&count=true" frameBorder="0" scrolling="0" width="102" height="20" title="GitHub"></iframe>
       </div>
     </Header>
-    <Content style={{ margin: '20px' }}>
+    <Content style={{ margin: '20px',minHeight: 'calc(100vh - 64px)'}}>
       <Router></Router>
     </Content>
   </Layout>

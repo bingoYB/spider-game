@@ -3,7 +3,7 @@ import React from 'react'
 const Flex:React.FunctionComponent = ({children})=>{
   return <div style={{
     'display':'flex',
-    'justifyContent':'space-around'
+    'justifyContent':'start'
   }}>
     {children}
   </div>

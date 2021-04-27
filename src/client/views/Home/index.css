@@ -1,15 +1,8 @@
 .count {
-  font-size: 36px;
-}
-
-.home-header,
-.home-body {
-  padding: 16px 0;
-}
-
-.home-card {
-  padding: 0 16px;
-  min-width: 20%;
+  font-size: 34px;
+  line-height: 45px;
+  padding-left:20px;
+  font-weight:500;
 }
 
 .ball {
@@ -53,4 +46,12 @@
 * {
   scrollbar-color: #e5e5e5 #f7f7f9; /* 滑块颜色  滚动条背景颜色 */
   scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
+}
+
+.card-icon {
+  width:45px;
+  height:45px;
+  /* vertical-align: -0.15em; */
+  fill: currentColor;
+  overflow: hidden;
 }

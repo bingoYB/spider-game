@@ -42,16 +42,18 @@
   background: #bfbfbf;
 }
 
-/* 火狐 */
-* {
-  scrollbar-color: #e5e5e5 #f7f7f9; /* 滑块颜色  滚动条背景颜色 */
-  scrollbar-width: thin; /* 滚动条宽度有三种：thin、auto、none */
-}
-
 .card-icon {
   width:45px;
   height:45px;
   /* vertical-align: -0.15em; */
   fill: currentColor;
   overflow: hidden;
+}
+
+.attr-label {
+  color:rgba(0,0,0,.45);
+  & span{
+    color:#333;
+    /* font-size: px; */
+  }
 }

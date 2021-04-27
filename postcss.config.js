@@ -6,9 +6,9 @@ module.exports = {
 		postcssPresetEnv({
 			stage: 3,
 			browsers: 'last 2 versions',
-      features: {
-        'nesting-rules': true
-      }
+			features: {
+				'nesting-rules': true
+			}
 		}),
 	]
 }

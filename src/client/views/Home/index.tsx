@@ -1,7 +1,7 @@
 import React from "react";
 import CountUp from 'react-countup'
 import Flex from '../../components/Layout/Flex'
-import { Card, Col, Row, Space } from 'antd';
+import { Card, Col, Radio, Row, Space } from 'antd';
 import LoteryTable from './LoteryTable'
 import NumProbabilityChart from './NumProbabilityChart'
 import PriceChart from './PriceChart'
@@ -74,7 +74,7 @@ const Home: React.FunctionComponent = () => {
       <Col span={6}>
         <Card title="二等奖总人数">
           {loading ? <Loading></Loading> :
-           <Flex>
+            <Flex>
               <svg className="card-icon" aria-hidden="true">
                 <use xlinkHref="#icon-erdengjiang1"></use>
               </svg>
@@ -98,13 +98,27 @@ const Home: React.FunctionComponent = () => {
     <Space direction="vertical" size="middle" style={{ width: '100%' }}>
       <Row gutter={16}>
         <Col span={16}>
-          <Card title="前驱数字概率区间" >
+          <Card title="前驱数字概率区间" extra={(
+            <Radio.Group defaultValue="a" buttonStyle="solid">
+              <Radio.Button value="a">近30期</Radio.Button>
+              <Radio.Button value="b">近50期</Radio.Button>
+              <Radio.Button value="c">近100期</Radio.Button>
+              <Radio.Button value="d">全部</Radio.Button>
+            </Radio.Group>)
+          }>
             {loading ? <Loading></Loading> :
               <NumProbabilityChart chartData={frontFigure} />}
           </Card>
         </Col>
         <Col span={8}>
-          <Card title="后驱数字概率区间">
+          <Card title="后驱数字概率区间" extra={(
+            <Radio.Group defaultValue="a" buttonStyle="solid">
+              <Radio.Button value="a">近30期</Radio.Button>
+              <Radio.Button value="b">近50期</Radio.Button>
+              <Radio.Button value="c">近100期</Radio.Button>
+              <Radio.Button value="d">全部</Radio.Button>
+            </Radio.Group>)
+          }>
             {loading ? <Loading></Loading> :
               <NumProbabilityChart chartData={backFigure} />}
           </Card>

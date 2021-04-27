@@ -42,7 +42,7 @@
 - Typescript：为 JS 提供良好的类型检查功能，能编译出高质量的 JS 代码。
 - inversify：提供IOC风格的koa后端node服务框架
 
-项目没有使用脚手架工具搭建，基于模板[inversify-koa-template](https://github.com/bingoYB/inversify-koa-template)，然后集成其他组件，一步一步配置而成。具体的搭建流程：[项目选型与环境搭建](https://github.com/bingoYB/spider-game/blob/main/选型与搭建.md)。
+项目没有使用脚手架工具搭建，基于模板[inversify-koa-template](https://github.com/bingoYB/inversify-koa-template)，然后集成其他组件，一步一步配置而成。具体的搭建流程：[项目选型与环境搭建](https://github.com/bingoYB/spider-game/blob/master/选型与搭建.md)。
 
 ## Start
 

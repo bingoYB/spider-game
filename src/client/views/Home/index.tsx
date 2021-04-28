@@ -25,7 +25,7 @@ const Home: React.FunctionComponent = () => {
   const [loading, setLoadState] = useState(true)
 
   useEffect(() => {
-    Promise.all([getAnalyze(), getLotteryList()]).then(arr => {
+    Promise.all([getAnalyze(-1), getLotteryList()]).then(arr => {
 
       appState.changeAnalyze(arr[0])
 
@@ -45,6 +45,14 @@ const Home: React.FunctionComponent = () => {
       setLoadState(false)
     })
   }, [])
+
+  const [area,setArea] = useState(-1)
+
+  function changeArea(e){
+    getAnalyze(e.target.value).then(rs=>{
+      appState.changeAnalyze(rs)
+    })
+  }
 
   return <div>
     <Row gutter={16}>
@@ -98,7 +106,7 @@ const Home: React.FunctionComponent = () => {
       <Row gutter={16}>
         <Col span={16}>
           <Card title="前驱数字概率区间" extra={(
-            <Radio.Group defaultValue={-1} buttonStyle="solid">
+            <Radio.Group defaultValue={-1} buttonStyle="solid" onChange={changeArea}>
               <Radio.Button value={30}>近30期</Radio.Button>
               <Radio.Button value={50}>近50期</Radio.Button>
               <Radio.Button value={100}>近100期</Radio.Button>
@@ -111,7 +119,7 @@ const Home: React.FunctionComponent = () => {
         </Col>
         <Col span={8}>
           <Card title="后驱数字概率区间" extra={(
-            <Radio.Group defaultValue={-1} buttonStyle="solid">
+            <Radio.Group defaultValue={-1} buttonStyle="solid" onChange={changeArea}>
               <Radio.Button value={30}>近30期</Radio.Button>
               <Radio.Button value={50}>近50期</Radio.Button>
               <Radio.Button value={100}>近100期</Radio.Button>

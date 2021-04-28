@@ -15,6 +15,7 @@ export const globalData: IAppContext = {
   lotteryData: {
     all: [],
     analyze: {
+      sourceData:[],
       frontFigure: [],
       backFigure: [],
       statistics: {

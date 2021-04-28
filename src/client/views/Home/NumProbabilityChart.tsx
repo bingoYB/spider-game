@@ -42,6 +42,10 @@ const numProbabilityChart: React.FC<Iprops> = ({ type }) => {
 
   else chartData = backFigure
 
+  chartData.shift()
+
+  console.log(chartData)
+
   return <div>
     <Chart
       padding="auto"
@@ -55,7 +59,7 @@ const numProbabilityChart: React.FC<Iprops> = ({ type }) => {
       <Line shape="smooth" position="index*nums" label="出现次数" />
     </Chart>
     {/* @ts-ignore */}
-    <NumProbabilityAnalyze chartData={data} />
+    <NumProbabilityAnalyze chartData={chartData} />
   </div>
 }
 

@@ -26,6 +26,6 @@ export async function getLotteryList(): Promise<Lottery.data[]> {
   }).then(rs=>rs.data.lottery)
 }
 
-export function getAnalyze():Promise<Lottery.analyze>{
-  return http.post('/lottery/analyze')
+export function getAnalyze(count:number|undefined):Promise<Lottery.analyze>{
+  return http.get('/lottery/analyze',{params:{count}})
 }

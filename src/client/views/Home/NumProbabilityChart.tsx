@@ -1,5 +1,5 @@
 import { Chart, Interval, Line } from 'bizcharts';
-import { Progress, Row, Col } from 'antd'
+import { Progress } from 'antd'
 import { Lottery } from 'lottery';
 import React from 'react'
 import _ from 'lodash';

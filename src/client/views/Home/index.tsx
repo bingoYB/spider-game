@@ -118,14 +118,7 @@ const Home: React.FunctionComponent = () => {
           </Card>
         </Col>
         <Col span={8}>
-          <Card title="后驱数字概率区间" extra={(
-            <Radio.Group defaultValue={-1} buttonStyle="solid" onChange={changeArea}>
-              <Radio.Button value={30}>近30期</Radio.Button>
-              <Radio.Button value={50}>近50期</Radio.Button>
-              <Radio.Button value={100}>近100期</Radio.Button>
-              <Radio.Button value={-1}>全部</Radio.Button>
-            </Radio.Group>)
-          }>
+          <Card title="后驱数字概率区间">
             {loading ? <Loading></Loading> :
               <NumProbabilityChart type='back' />}
           </Card>

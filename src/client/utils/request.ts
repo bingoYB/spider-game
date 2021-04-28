@@ -3,7 +3,7 @@ import axios ,{ AxiosInstance} from 'axios'
 
 
 export const gqlClient = new ApolloClient<unknown>({
-  uri: 'http://175.27.130.159:3000/graphql'
+  uri: 'http://localhost:3000/graphql'
 });
 
 const service: AxiosInstance = axios.create({

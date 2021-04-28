@@ -2,7 +2,7 @@ import { Lottery } from 'lottery';
 import React, { useState } from 'react';
 import { globalData, AppContext, IAppContext } from './appContext';
 
-const AppProvider = ({ children }: React.ProviderProps<{ value: IAppContext }>) => {
+const AppProvider = ({ children }: React.Props<{ value: IAppContext }>) => {
 
   const changeLotteryData = (data: Lottery.data[]) => {
     changeAppState((prevState) => ({

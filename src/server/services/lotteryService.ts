@@ -54,21 +54,22 @@ export default class LotteryService implements ILottery{
     for (let i = 1; i < frontFigureNums.length; i++) {
       const times = frontFigureNums[i];
       if (times) {
-        frontFigure[i] = { nums: times, probability: Math.round(times * 100 / data.length) }
+        frontFigure[i] = {index:i, nums: times, probability: Math.round(times * 100 / data.length) }
       }
     }
 
     for (let i = 1; i < backFigureNums.length; i++) {
       const times = backFigureNums[i];
       if (times) {
-        backFigure[i] = { nums: times, probability: Math.round(times * 100 / data.length) }
+        backFigure[i] = { index: i, nums: times, probability: Math.round(times * 100 / data.length) }
       }
     }
 
     return {
       frontFigure,
       backFigure,
-      statistics
+      statistics, 
+      sourceData: data
     }
   }
 

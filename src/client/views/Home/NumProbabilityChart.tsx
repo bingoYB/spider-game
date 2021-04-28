@@ -4,6 +4,9 @@ import { Lottery } from 'lottery';
 import React from 'react'
 import _ from 'lodash';
 import Flex from '../../components/Layout/Flex';
+import {AppContext} from '../../context/appContext'
+
+const { useContext } = React
 
 const scale = {
   index: {
@@ -18,7 +21,7 @@ const scale = {
 }
 
 interface Iprops {
-  chartData: Lottery.numPro[]
+  type: string
 }
 
 interface IDealData {
@@ -27,17 +30,24 @@ interface IDealData {
   index: number
 }
 
-const numProbabilityChart: React.FC<Iprops> = ({ chartData }) => {
-  chartData.shift()
+const numProbabilityChart: React.FC<Iprops> = ({ type }) => {
 
-  const data: IDealData[] = chartData.map((el, index) => ({ ...el, index: index + 1 }))
+  const appState = useContext(AppContext)
+
+  const { frontFigure, backFigure,sourceData } = appState.lotteryData.analyze
+
+  let chartData: Lottery.numPro[]
+
+  if (type === 'front') chartData = frontFigure
+
+  else chartData = backFigure
 
   return <div>
     <Chart
       padding="auto"
       autoFit
       height={200}
-      data={data}
+      data={chartData}
       scale={scale}
       interactions={['active-region']}
     >

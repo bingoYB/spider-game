@@ -1,12 +1,13 @@
 import {
   controller, httpGet, httpPost,
-  interfaces, TYPE
+  interfaces, queryParam, TYPE
 } from 'inversify-koa-utils'
 import TAGS from '../constant/tags';
 import { IRouterContext } from 'koa-router'
 import { inject } from 'inversify';
 import { provideThrowalbe } from '../ioc';
 import { ILottery } from '../interface/ILottery';
+import _ from 'lodash';
 
 @provideThrowalbe(TYPE.Controller, "LotteryController")
 @controller('/lottery')
@@ -44,9 +45,13 @@ export default class LotteryController implements interfaces.Controller {
   }
 
   @httpPost('/analyze')
-  private async analyze(ctx: IRouterContext, next: Promise<unknown>): Promise<any> {
-    const data = await this.lotteryService.getLottery()
+  private async analyze(ctx: IRouterContext, @queryParam('count') count :number): Promise<any> {
+    let data = await this.lotteryService.getLottery()
+    if (count&&count>0){
+      data = _.take(data, count)
+    }
     const analyze = this.lotteryService.analyze(data)
+
     ctx.body = {
       code: 200,
       data: analyze

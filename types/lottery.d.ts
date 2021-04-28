@@ -1,5 +1,5 @@
 
-export declare namespace Lottery{
+export declare namespace Lottery {
   interface data {
     uid: string
     frontNums: number[]
@@ -14,10 +14,10 @@ export declare namespace Lottery{
     // 总投注额(元)
     totalBet: number
     // 开奖日期
-    date: string|number
+    date: string | number
   }
 
-  interface statistics{
+  interface statistics {
     // 总共期数
     total: number
     // 一等奖人数
@@ -26,17 +26,19 @@ export declare namespace Lottery{
     secondNum: number
     // 最新奖池总额
     latestPrice: number
-      // 总奖池
+    // 总奖池
     totalPrice: number
   }
 
-  interface analyze{
-    frontFigure:numPro[]
-    backFigure:numPro[]
-    statistics:statistics
+  interface analyze {
+    frontFigure: numPro[]
+    backFigure: numPro[]
+    statistics: statistics,
+    sourceData: data[]
   }
 
-  interface numPro{
+  interface numPro {
+    index: number
     nums: number
     probability: number
   }

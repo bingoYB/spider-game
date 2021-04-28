@@ -26,8 +26,9 @@ const Home: React.FunctionComponent = () => {
 
   useEffect(() => {
     Promise.all([getAnalyze(), getLotteryList()]).then(arr => {
-      console.log(arr[0])
+
       appState.changeAnalyze(arr[0])
+
       const lotteryList: Lottery.data[] = arr[1].map(el => ({
         ...el,
         firstPrice: Number(el.firstPrice),
@@ -39,8 +40,6 @@ const Home: React.FunctionComponent = () => {
         // 时间字符串： '2015-03-01', '2015-03-01 12:01:40', '2015/01/05', '2015-03-01T16:00:00.000Z'
         date: Number(el.date)
       }))
-
-      console.log(lotteryList)
 
       appState.changeLotteryData(lotteryList)
       setLoadState(false)
@@ -99,28 +98,28 @@ const Home: React.FunctionComponent = () => {
       <Row gutter={16}>
         <Col span={16}>
           <Card title="前驱数字概率区间" extra={(
-            <Radio.Group defaultValue="a" buttonStyle="solid">
-              <Radio.Button value="a">近30期</Radio.Button>
-              <Radio.Button value="b">近50期</Radio.Button>
-              <Radio.Button value="c">近100期</Radio.Button>
-              <Radio.Button value="d">全部</Radio.Button>
+            <Radio.Group defaultValue={-1} buttonStyle="solid">
+              <Radio.Button value={30}>近30期</Radio.Button>
+              <Radio.Button value={50}>近50期</Radio.Button>
+              <Radio.Button value={100}>近100期</Radio.Button>
+              <Radio.Button value={-1}>全部</Radio.Button>
             </Radio.Group>)
           }>
             {loading ? <Loading></Loading> :
-              <NumProbabilityChart chartData={frontFigure} />}
+              <NumProbabilityChart type='front' />}
           </Card>
         </Col>
         <Col span={8}>
           <Card title="后驱数字概率区间" extra={(
-            <Radio.Group defaultValue="a" buttonStyle="solid">
-              <Radio.Button value="a">近30期</Radio.Button>
-              <Radio.Button value="b">近50期</Radio.Button>
-              <Radio.Button value="c">近100期</Radio.Button>
-              <Radio.Button value="d">全部</Radio.Button>
+            <Radio.Group defaultValue={-1} buttonStyle="solid">
+              <Radio.Button value={30}>近30期</Radio.Button>
+              <Radio.Button value={50}>近50期</Radio.Button>
+              <Radio.Button value={100}>近100期</Radio.Button>
+              <Radio.Button value={-1}>全部</Radio.Button>
             </Radio.Group>)
           }>
             {loading ? <Loading></Loading> :
-              <NumProbabilityChart chartData={backFigure} />}
+              <NumProbabilityChart type='back' />}
           </Card>
         </Col>
       </Row>

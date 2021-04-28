@@ -45,7 +45,7 @@ export default class LotteryController implements interfaces.Controller {
     }
   }
 
-  @httpPost('/analyze')
+  @httpGet('/analyze')
   private async analyze(@queryParam('count') count: number, @response() res: Koa.Response): Promise<any> {
     let data = await this.lotteryService.getLottery()
     if (count && count > 0) {

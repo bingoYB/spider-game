@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 const prodConfig = {
@@ -45,14 +44,6 @@ const prodConfig = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'bingo-spider-[name].[contenthash].css'
-    }),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default', { discardComments: { removeAll: true } }],
-      },
-      canPrint: true
     }),
     new HtmlWebpackPlugin({
       template: './build/template/index.ejs',

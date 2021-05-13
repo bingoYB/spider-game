@@ -18,7 +18,7 @@ const testData = {
 describe('测试 lotterySpider 的爬虫功能', () => {
   it('爬虫功能',function(done) {
     getData().then((data)=>{
-      console.log(data)
+      // console.log(data)
       expect(data.length).to.be.above(100)
       expect(data[0]).has.property('uid')
       expect(data[0]).has.property('frontNums')

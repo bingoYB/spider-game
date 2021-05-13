@@ -29,6 +29,13 @@ async function  testDel() {
   expect(findrs.length).to.be.equal(0)
 }
 
+async function queryTimeTest(){
+  let timer1 = new Date()
+  await LotteryModel.find({})
+  let timer2 = new Date()
+  console.log('速度结果：',Number(timer2)-Number(timer1))
+}
+
 describe('测试 LotteryModel 的增删改查功能', () => {
   it('新增与查询', function (done) {
     this.timeout(10000)
@@ -38,5 +45,12 @@ describe('测试 LotteryModel 的增删改查功能', () => {
   it('删除查询', function (done) {
     this.timeout(10000)
     testDel().then(rs => done()).catch(err => done(err))
+  })
+
+  it('查询速度',function (done) {
+    this.timeout(100000)
+    queryTimeTest().then(()=>{
+      done()
+    })
   })
 })

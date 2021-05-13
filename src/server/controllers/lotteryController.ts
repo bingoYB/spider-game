@@ -9,6 +9,7 @@ import { provideThrowalbe } from '../ioc'
 import { ILottery } from '../interface/ILottery'
 import Koa from 'koa'
 import _ from 'lodash'
+import { getData } from '../utils/lotterySpider'
 
 @provideThrowalbe(TYPE.Controller, "LotteryController")
 @controller('/lottery')
@@ -39,6 +40,7 @@ export default class LotteryController implements interfaces.Controller {
   @httpGet('/getMongoData')
   private async getMongoData(ctx: IRouterContext, next: Promise<unknown>): Promise<any> {
     const data = await this.lotteryService.getLottery()
+    // let data = await getData()
     ctx.body = {
       code: 200,
       data
@@ -47,7 +49,8 @@ export default class LotteryController implements interfaces.Controller {
 
   @httpGet('/analyze')
   private async analyze(@queryParam('count') count: number, @response() res: Koa.Response): Promise<any> {
-    let data = await this.lotteryService.getLottery()
+    // let data = await this.lotteryService.getLottery()
+    let data = await getData()
     if (count && count > 0) {
       data = _.take(data, count)
     }

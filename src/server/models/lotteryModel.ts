@@ -126,9 +126,9 @@ const LotteryModel = {
    * @param {object} [query]
    * @returns {Lottery.data[]}
    */
-  async find(query: FilterQuery<Lottery.data>): Promise<Lottery.data[]> {
+  async find(query: FilterQuery<Lottery.data>|undefined): Promise<Lottery.data[]> {
     return new Promise((rs, rj) => {
-      LotteryCol.find(query, (err: Error | null, res: Lottery.data[]) => {
+      LotteryCol.find((err: Error | null, res: Lottery.data[]) => {
         if (err) {
           logger.error(JSON.stringify(err));
           rj(err)

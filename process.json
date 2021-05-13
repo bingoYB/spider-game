@@ -3,6 +3,9 @@
     "script": "dist/app.js",
     "instances": "2",
     "exec_mode": "cluster",
+    "max_restarts":5,
+    "log_date_format":"YYYY-MM-DD HH:mm:ss",
+    "watch":"dist",
     "env": {
       "NODE_ENV": "development",
       "PORT": 3002
@@ -11,7 +14,6 @@
       "NODE_ENV": "production",
       "PORT": 3000
     },
-    "log_date_format": "YYYY-MM-DD_HH:mm Z",
     "merge_logs": true
   }]
 }

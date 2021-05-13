@@ -13,7 +13,7 @@
     "server:dev": "nodemon --watch ./src/server -e ts --exec ts-node ./src/server/app.ts",
     "server:build": "cross-env NODE_ENV=production gulp",
     "build": "npm-run-all --parallel client:build server:build",
-    "test": "env NODE_ENV=test TS_NODE_PROJECT=\"tsconfig.json\" mocha --require ts-node/register 'test/**/*.ts'",
+    "test": "cross-env NODE_ENV=test TS_NODE_PROJECT=\"tsconfig.json\" mocha --require ts-node/register 'test/**/*.ts'",
     "doc": "apidoc -i src/ -o apidoc/"
   },
   "repository": {
@@ -52,6 +52,8 @@
     "koa-static": "^5.0.0",
     "lodash": "^4.17.21",
     "log4js": "^6.3.0",
+    "lowdb": "^1.0.0",
+    "mongodb": "^3.6.6",
     "mongoose": "^5.10.19",
     "multer": "^1.4.2",
     "pm2": "^4.5.6",

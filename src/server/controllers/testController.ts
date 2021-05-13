@@ -16,10 +16,16 @@ export default class TestController implements interfaces.Controller {
    */
   @httpGet('health/check')
   private async index(ctx: IRouterContext): Promise<any> {
-    logger.info('#######')
+    logger.info('health-check ok')
     ctx.body = {
       status: true,
       code: 200,
     }
+  }
+
+  @httpGet('mock/anlyze')
+  private async anlyze(ctx: IRouterContext): Promise<any> {
+    const res = require('../mock/analyze.json')
+    ctx.body = res
   }
 }

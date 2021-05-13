@@ -15,9 +15,3 @@ ReactDOM.render(
   </Suspense>,
   document.getElementById('root')
 );
-
-{
-  (_internalRoot:FiberRoot): {
-    (current:HostRootFiber)
-  }
-}

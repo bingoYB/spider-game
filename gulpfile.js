@@ -6,6 +6,9 @@ tsProject = ts.createProject("tsconfig.json");
 gulp.task('build:graphql', () =>
   gulp.src('./src/server/**/*.graphql').pipe(gulp.dest('./dist/'))
 );
+gulp.task('build:json', () =>
+  gulp.src('./src/server/**/*.json').pipe(gulp.dest('./dist/'))
+);
 
 gulp.task('build:ts', () =>
   gulp
@@ -15,7 +18,7 @@ gulp.task('build:ts', () =>
 );
 
 // 定义 default 任务
-gulp.task("default", gulp.series("build:graphql", "build:ts"));
+gulp.task("default", gulp.series("build:graphql", "build:json", "build:ts"));
 
 if (process.env.NODE_ENV !== 'production') {
   gulp.watch('./src/serve/**/*.ts', gulp.series('default'));

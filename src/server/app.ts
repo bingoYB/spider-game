@@ -8,6 +8,8 @@ import { handleLogger } from './middlewares/logHandler'
 import { logger } from './utils/logger'
 import initGraphQL from "./graphql";
 import serve from 'koa-static';
+import compress from 'koa-compress'
+
 
 // koa - bodyparser没有处理文件上传的功能，而koa - better - body处理了文件上传功能
 // koa - bodyparserh会将请求体挂载在ctx.request.body，而koa - better - body将请求体挂载在ctx.request.fields
@@ -19,6 +21,8 @@ container.load(buildProviderModule())
 let server = new InversifyKoaServer(container)
 
 server.setConfig((app) => {
+  const options = { threshold: 300 };
+  app.use(compress(options));
   // add body parser
   app.use(bodyParser());
   app.use(handleLogger)

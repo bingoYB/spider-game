@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
+const TerserPlugin = require("terser-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 
 
 const prodConfig = {
@@ -21,7 +24,8 @@ const prodConfig = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
-        ]
+        ],
+        sideEffects: true
       },
       {
         test: /\.(less)$/,
@@ -42,6 +46,7 @@ const prodConfig = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'bingo-spider-[name].[contenthash].css'
     }),
@@ -55,21 +60,28 @@ const prodConfig = {
       clientsClaim: true, // 让浏览器立即 servece worker 被接管
       skipWaiting: true,  // 更新 sw 文件后，立即插队到最前面
       include: [/\.js$/, /\.css$/, /\.ico$/],
-    }),
+    })
   ],
   optimization: {
     runtimeChunk: {
       name: 'runtime'
     },
+    usedExports:true,
     splitChunks: {
-      // chunks: 'all',
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors'
-        }
-      }
-    }
+      chunks: 'all',
+      // cacheGroups: {
+      //   vendors: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: 'vendors'
+      //   }
+      // }
+    },
+    minimizer: [new TerserPlugin({
+      terserOptions: {    //Terser 压缩配置
+        output: { comments: false }
+      },
+      extractComments: true,    //将注释剥离到单独的文件中
+    })]
   },
   externals: {
     'react-dom': 'ReactDOM',

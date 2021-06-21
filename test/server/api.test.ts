@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost'
 import { Lottery } from 'lottery';
 
 const client = new ApolloClient<unknown>({
-  uri: 'http://175.27.130.159:3000/graphql',
+  uri: 'http://localhost:3000/graphql',
   // @ts-ignore
   fetch: fetch
 });

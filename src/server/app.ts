@@ -9,6 +9,9 @@ import { logger } from './utils/logger'
 import initGraphQL from "./graphql";
 import serve from 'koa-static';
 import compress from 'koa-compress'
+// @ts-ignore
+// import memeye from 'memeye';
+// memeye();
 
 
 // koa - bodyparser没有处理文件上传的功能，而koa - better - body处理了文件上传功能

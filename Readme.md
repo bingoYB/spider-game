@@ -12,7 +12,7 @@
 
 ## Preview
 
-![示例图片](https://github.com/bingoYB/spider-game/blob/main/example.png)
+![示例图片](https://github.com/bingoYB/spider-game/blob/master/example.png?raw=true)
 
 
 
